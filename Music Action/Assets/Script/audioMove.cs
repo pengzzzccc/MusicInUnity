@@ -46,7 +46,7 @@ public class audioMove : MonoBehaviour
         light.intensity = averageLevel * scaleMultiplier * 1.2f;
 
         // 设置自发光颜色的强度
-        Color emissionColor = Color.white * (averageLevel * scaleMultiplier);  // 这里使用白色，可以更改为其他颜色
+        Color emissionColor = Color.white * (1 + averageLevel * scaleMultiplier);  // 这里使用白色，可以更改为其他颜色
         material.SetColor("_EmissionColor", emissionColor);  // 设置自发光颜色
     }
 }
