@@ -116,11 +116,11 @@ public class BoxPlayerMove : MonoBehaviour
     void Movecontrol()
     {
         //movement
-        Vector3 current = myrigidbody.velocity;
+        Vector3 current = myrigidbody.linearVelocity;
 
         moveVector = transform.TransformDirection(moveVector);
 
-        myrigidbody.velocity = new Vector3(moveVector.x * moveSpeed, Mathf.Clamp(current.y, maxFailspeed, float.MaxValue), moveVector.z * moveSpeed);
+        myrigidbody.linearVelocity = new Vector3(moveVector.x * moveSpeed, Mathf.Clamp(current.y, maxFailspeed, float.MaxValue), moveVector.z * moveSpeed);
         
     }
 
@@ -162,7 +162,7 @@ public class BoxPlayerMove : MonoBehaviour
                     {
                         Debug.Log("Jumpbuffer!!!");
                     }
-                    myrigidbody.velocity = new Vector3(myrigidbody.velocity.x, Mathf.Clamp(jumpSpeed, maxFailspeed, float.MaxValue), myrigidbody.velocity.z);
+                    myrigidbody.linearVelocity = new Vector3(myrigidbody.linearVelocity.x, Mathf.Clamp(jumpSpeed, maxFailspeed, float.MaxValue), myrigidbody.linearVelocity.z);
 
                     //Jump graphics drawing controls
                     gizmoData();
@@ -176,7 +176,7 @@ public class BoxPlayerMove : MonoBehaviour
             case jumpState.isJump:
                 //apply gravity
                 jumpSpeed += gravity * Time.fixedDeltaTime;
-                myrigidbody.velocity = new Vector3(myrigidbody.velocity.x, Mathf.Clamp(jumpSpeed, maxFailspeed, float.MaxValue), myrigidbody.velocity.z);
+                myrigidbody.linearVelocity = new Vector3(myrigidbody.linearVelocity.x, Mathf.Clamp(jumpSpeed, maxFailspeed, float.MaxValue), myrigidbody.linearVelocity.z);
 
                 //jumpbuffer
                 jumpbufferCheck();
